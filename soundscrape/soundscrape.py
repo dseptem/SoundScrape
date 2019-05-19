@@ -626,7 +626,7 @@ def scrape_bandcamp_url(url, num_tracks=sys.maxsize, folders=False, custom_path=
                 puts_safe(colored.yellow("Track unavailble for scraping: ") + colored.white(track_name))
                 continue
 
-            puts_safe(colored.green("Downloading") + colored.white(f': {track_name}'.encode('utf-8', errors='replace')))
+            puts_safe(colored.green("Downloading") + colored.white(': ' + track_name))
             path = download_file(track['file']['mp3-128'], path)
 
             album_year = album_data['album_release_date']
@@ -1314,7 +1314,7 @@ def puts_safe(text):
         if sys.version_info < (3,0,0):
             puts(text)
         else:
-            puts(text.encode(sys.stdout.encoding, errors='replace').decode())
+            puts(text.encode('ascii', errors='replace').decode())
     else:
         puts(text)
 
